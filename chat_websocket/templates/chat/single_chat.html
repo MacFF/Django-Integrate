@@ -1,0 +1,21 @@
+{% extends "web/base.html" %}
+{% block head %}
+    {{ block.super }}
+    <!-- Include htmx scripts -->
+    <script src="https://unpkg.com/htmx.org@1.9.11"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/ws.js"></script>
+{% endblock %}
+
+{% block body %}
+<div class="chat-wrapper" hx-ext="ws" ws-connect="/ws/chatgpt-demo/">
+  <div id="message-list" class="chat-pane">
+    <div class="chat-message-system">
+      Hello, what can I help you with todaysss?
+    </div>
+  </div>
+  <form class="chat-input-bar" ws-send>
+    <input name="message" type="text" placeholder="Type your message..." >
+    <button type="submit">Send<button>
+  </form>
+</div>
+{% endblock %} 
